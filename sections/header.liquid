@@ -62,8 +62,10 @@
             </div>
             <div class="menu-items">
                 {% for link in linklists.main-menu.links %}
-                    <li>{{ link.title | link_to: link.url }}</li>
-                    {% endfor %}
+                    {% if link.title != 'search' %}
+                        <li>{{ link.title | link_to: link.url }}</li>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
 
