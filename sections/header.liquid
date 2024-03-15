@@ -54,8 +54,30 @@
         </div>
     </div>
 
-    {% comment %} company logo here {% endcomment %}
-    {% comment %} <img src="{{ 'bijoux_logo.webp' |  asset_url }}"> {% endcomment %}
+    <div class="menu">
+        <div>
+            <div>
+            {% comment %} company logo here {% endcomment %}
+            <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
+            </div>
+            <div>
+                {% for link in linklists.main-menu.links %}
+                    <!-- menu content -->
+                    {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <a href="/search" title="">Search</a>
+            </div>
+            <div>
+                <a href="/cart" title="">Cart</a>
+            </div>
+        </div>
+
+    </div>
+
 
     {% comment %} <h1>{{ shop.name }}</h1>
 
