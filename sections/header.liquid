@@ -20,7 +20,7 @@
                 {% if customer %}
                     <p>Hello, {{ customer.first_name }}!</p>
                 {% else %}
-                <a href="">Sign-up / Log in</a>
+                <a href="{{ routes.account_login_url }}">Sign-up / Log in</a>
                 {% endif %}
             </div>
             {% comment %} {% if localization.available_countries.size > 1 %}
