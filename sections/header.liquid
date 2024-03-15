@@ -56,7 +56,7 @@
 
     <div class="menu">
         <div>
-            <div>
+            <div class="logo-container">
             {% comment %} company logo here {% endcomment %}
             <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
             </div>
@@ -150,6 +150,12 @@
 
     .menu {
         padding: 10px 20px;
+    }
+
+    .logo-container {
+        display: flex;
+        height: 55px;
+        width: 140px;
     }
 </style>
 
