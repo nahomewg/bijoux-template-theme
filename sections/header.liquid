@@ -58,7 +58,7 @@
         <div>
             <div>
             {% comment %} company logo here {% endcomment %}
-            <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
+            <img src="{{ 'bijoux_logo.webp' |  asset_url: width: 155  }}">
             </div>
             <div>
                 {% for link in linklists.main-menu.links %}
