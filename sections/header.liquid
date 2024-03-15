@@ -17,7 +17,11 @@
             </div>
             <div class="vl"></div>
             <div class="banner-text">
+                {% if customer %}
+                    <p>Hello, {{ customer.first_name }}!</p>
+                {% else %}
                 <a href="">Sign-up / Log in</a>
+                {% endif %}
             </div>
             {% comment %} {% if localization.available_countries.size > 1 %}
                 <localization-form>
