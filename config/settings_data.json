@@ -1,0 +1,17 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "show_search": false,
+          "bg": "#e48f2f",
+          "txt_color": "#797979"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}
