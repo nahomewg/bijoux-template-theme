@@ -1,0 +1,215 @@
+<header>
+
+    {% comment %} banner with currency option, sign up/ log in, and additional announcements {% endcomment %}
+    <div class="banner">
+        <div class="banner-text">
+            <p>FOLLOW OUR BACKUP INSTAGRAM TO VIEW OUR NEW ARRIVALS @bijouxbsc_backup</p>
+        </div>
+        <div class="banner-btns">
+            <div>
+                <select>
+                    <option value="CAD">
+                        CAD
+                    </option>
+                    <option value="USD">
+                        USD
+                    </option>
+                </select>
+            </div>
+            <div class="vl"></div>
+            <div class="banner-text">
+                <a href="">Sign-up / Log in</a>
+            </div>
+            {% comment %} {% if localization.available_countries.size > 1 %}
+                <localization-form>
+                  {% form 'localization' %}
+                    <div class="disclosure">
+                      <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="CountryList">
+                        {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})
+              
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                        </svg>
+                      </button>
+              
+                      <ul id="CountryList" role="list" class="disclosure__list" hidden>
+                        {% for country in localization.available_countries %}
+                          <li class="disclosure__item" tabindex="-1">
+                            <a href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
+                              {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+              
+                      <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+                    </div>
+                  {% endform %}
+                </localization-form>
+              {% endif %} {% endcomment %}
+              
+        </div>
+    </div>
+
+    {% comment %} company logo here {% endcomment %}
+    {% comment %} <img src="{{ 'bijoux_logo.webp' |  asset_url }}"> {% endcomment %}
+
+    {% comment %} <h1>{{ shop.name }}</h1>
+
+    <ul>
+        <!-- Main menu -->
+        {% for link in linklists.main-menu.links -%}
+            <li>{{ link.title | link_to: link.url }}</li>
+        {%- endfor %}
+    </ul>
+
+    {% if section.settings.show_search %}
+        <form action="/search">
+            <input type="search" name="q">
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %} {% endcomment %}
+
+
+</header>
+
+<style>
+    header {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        background: {{ section.settings.bg }};
+    }
+    
+    .vl {
+        height: 30%;
+        padding: 0 !important;
+        border-left: 1px solid {{ section.settings.txt_color }};
+    }
+
+    .banner {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .banner-btns, .banner-text {
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .banner-text {
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .banner-text p, .banner-text a {
+        font-size: 16px;
+        padding-left: 20px;
+        text-decoration: none;
+        color: {{ section.settings.txt_color }};
+    }
+
+    .banner-btns div {
+        padding-right: 20px;
+    }
+
+    .banner-btns select {
+        border: none;
+        cursor: pointer;
+        color: {{ section.settings.txt_color }};
+        background-color: {{ section.settings.bg }};
+    }
+
+    @media screen and (max-width: 1149px){
+        .banner-btns, .banner-btns select, .banner-text p, .banner-text a {
+            font-size: 14px !important;
+        }
+    }
+    @media screen and (max-width: 949px){
+        .banner-btns, .banner-btns select, .banner-text p, .banner-text a {
+            font-size: 12px !important;
+        }
+    }
+</style>
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+    class LocalizationForm extends HTMLElement {
+    constructor() {
+        super();
+        this.elements = {
+        input: this.querySelector('input[name="language_code"], input[name="country_code"]'),
+        button: this.querySelector('button'),
+        panel: this.querySelector('ul'),
+        };
+        this.elements.button.addEventListener('click', this.openSelector.bind(this));
+        this.elements.button.addEventListener('focusout', this.closeSelector.bind(this));
+        this.addEventListener('keyup', this.onContainerKeyUp.bind(this));
+
+        this.querySelectorAll('a').forEach(item => item.addEventListener('click', this.onItemClick.bind(this)));
+    }
+
+    hidePanel() {
+        this.elements.button.setAttribute('aria-expanded', 'false');
+        this.elements.panel.setAttribute('hidden', true);
+    }
+
+    onContainerKeyUp(event) {
+        if (event.code.toUpperCase() !== 'ESCAPE') return;
+
+        this.hidePanel();
+        this.elements.button.focus();
+    }
+
+    onItemClick(event) {
+        event.preventDefault();
+        const form = this.querySelector('form');
+        this.elements.input.value = event.currentTarget.dataset.value;
+        if (form) form.submit();
+    }
+
+    openSelector() {
+        this.elements.button.focus();
+        this.elements.panel.toggleAttribute('hidden');
+        this.elements.button.setAttribute('aria-expanded', (this.elements.button.getAttribute('aria-expanded') === 'false').toString());
+    }
+
+    closeSelector(event) {
+        const shouldClose = event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON';
+        if (event.relatedTarget === null || shouldClose) {
+        this.hidePanel();
+        }
+    }
+    }
+
+    customElements.define('localization-form', LocalizationForm);
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show_search",
+                "label": "Show search form?"
+            },
+            {
+                "type": "color",
+                "id": "bg",
+                "label": "Background color"
+            },
+            {
+                "type": "color",
+                "id": "txt_color",
+                "label": "Text color"
+            }
+        ]
+    }
+{% endschema %}
