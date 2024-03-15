@@ -62,7 +62,7 @@
             </div>
             <div>
                 {% for link in linklists.main-menu.links %}
-                    <!-- menu content -->
+                    <li>{{ link.title | link_to: link.url }}</li>
                     {% endfor %}
             </div>
         </div>
