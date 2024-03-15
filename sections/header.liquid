@@ -2,7 +2,7 @@
     {% comment %} banner with currency option, sign up/ log in, and additional announcements {% endcomment %}
     <div class="banner">
         <div class="banner-text">
-            <p>FOLLOW OUR BACKUP INSTAGRAM TO VIEW OUR NEW ARRIVALS @bijouxbsc_backup</p>
+            <a href="https://www.instagram.com/bijouxbsc_backup/" target="_blank">FOLLOW OUR BACKUP INSTAGRAM TO VIEW OUR NEW ARRIVALS @bijouxbsc_backup</a>
         </div>
         <div class="banner-btns">
             <div>
@@ -17,7 +17,11 @@
             </div>
             <div class="vl"></div>
             <div class="banner-text">
-                <a href="">Sign-up / Log in</a>
+                {% if customer %}
+                    <p>Hello, {{ customer.first_name }}!</p>
+                {% else %}
+                <a href="{{ routes.account_login_url }}">Sign-up / Log in</a>
+                {% endif %}
             </div>
             {% comment %} {% if localization.available_countries.size > 1 %}
                 <localization-form>
@@ -50,8 +54,32 @@
         </div>
     </div>
 
-    {% comment %} company logo here {% endcomment %}
-    {% comment %} <img src="{{ 'bijoux_logo.webp' |  asset_url }}"> {% endcomment %}
+    <div class="menu">
+        <div>
+            <div class="logo-container">
+            {% comment %} company logo here {% endcomment %}
+            <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
+            </div>
+            <div class="menu-items">
+                {% for link in linklists.main-menu.links %}
+                    {% if link.title != 'Search' %}
+                        <li>{{ link.title | link_to: link.url }}</li>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <a href="/search" title="">Search</a>
+            </div>
+            <div>
+                <a href="/cart" title="">Cart</a>
+            </div>
+        </div>
+
+    </div>
+
 
     {% comment %} <h1>{{ shop.name }}</h1>
 
@@ -77,11 +105,10 @@
         border: 0;
         margin: 0;
         padding: 0;
-        background: {{ section.settings.bg }};
     }
     
     .vl {
-        height: 30%;
+        height: 70%;
         padding: 0 !important;
         border-left: 1px solid {{ section.settings.txt_color }};
     }
@@ -89,29 +116,20 @@
     .banner {
         display: flex;
         justify-content: space-between;
+        padding: 10px 20px;
+        background: {{ section.settings.bg }};
     }
 
     .banner-btns, .banner-text {
         margin: 0;
+        gap: 10px;
         display: flex;
         align-items: center;
     }
-
-    .banner-text {
-        margin: 0;
-        display: flex;
-        align-items: center;
-    }
-
     .banner-text p, .banner-text a {
         font-size: 16px;
-        padding-left: 20px;
         text-decoration: none;
         color: {{ section.settings.txt_color }};
-    }
-
-    .banner-btns div {
-        padding-right: 20px;
     }
 
     .banner-btns select {
@@ -129,6 +147,24 @@
     @media screen and (max-width: 949px){
         .banner-btns, .banner-btns select, .banner-text p, .banner-text a {
             font-size: 12px !important;
+        }
+    }
+
+    .menu {
+        padding: 10px 20px;
+    }
+
+    .logo-container {
+        display: flex;
+        height: 55px;
+        width: 140px;
+    }
+
+    .menu-items {
+        display: flex;
+        li {
+            width: 100%;
+            list-style-type: none;
         }
     }
 </style>
@@ -194,11 +230,6 @@
     {
         "name": "Header",
         "settings": [
-            {
-                "type": "checkbox",
-                "id": "show_search",
-                "label": "Show search form?"
-            },
             {
                 "type": "color",
                 "id": "bg",
