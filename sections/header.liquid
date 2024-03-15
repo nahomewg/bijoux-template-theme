@@ -60,7 +60,7 @@
             {% comment %} company logo here {% endcomment %}
             <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
             </div>
-            <div>
+            <div class="menu-items">
                 {% for link in linklists.main-menu.links %}
                     <li>{{ link.title | link_to: link.url }}</li>
                     {% endfor %}
@@ -156,6 +156,10 @@
         display: flex;
         height: 55px;
         width: 140px;
+    }
+
+    .menu-items {
+        display: flex;
     }
 </style>
 
