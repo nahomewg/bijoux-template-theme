@@ -11,6 +11,20 @@
         <div>
             {% if cart.empty? %}
                 <p id="emptyCart">Your cart is currently empty</p>
+            {% else %}
+                {% for item in cart.items %}
+                    <div class="item-grid">
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+                            
+                        </div>
+                    </div>
+                {% endfor %}
             {% endif %}
         </div>
         <div>
