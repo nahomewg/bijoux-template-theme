@@ -1,4 +1,4 @@
-<li>
+{% comment %} <li>
     <select>
         <option>
             {{ link.title | link_to: link.url }}
@@ -12,4 +12,12 @@
 
 <style>
 
-</style>
+</style> {% endcomment %}
+<div class="dropdown">
+    <button class="drop-btn">{{ link.title |  link_to: link.url }}</button>
+    <div class="dropdown-content">
+        {% for child in link.links %}
+            <a href="{{ child.url }}">{{ child.title }}</a>
+        {% endfor %}
+    </div>
+</div>
