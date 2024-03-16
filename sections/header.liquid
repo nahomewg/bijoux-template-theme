@@ -65,7 +65,7 @@
             <ul>
                 {% for link in linklists.main-menu.links %}
                     {% if link.title != 'Search' %}
-                        {% if link.title != 'Home' %}
+                        {% if link.title == 'Home' %}
                             <li>{{ link.title | link_to: link.url }}</li>
                         {% else %}
                         {% endif %}
