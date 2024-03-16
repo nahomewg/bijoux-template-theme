@@ -1,4 +1,4 @@
-{% paginate collection.products by 4 %}
+{% comment %} {% paginate collection.products by 4 %}
     <h1>
         {{ collection.title }}
     </h1>
@@ -43,4 +43,4 @@
     Shopify.queryParams.sort_by = value;
     location.search = new URLSearchParams(Shopify.queryParams).toString();
   });
-</script>
+</script> {% endcomment %}
