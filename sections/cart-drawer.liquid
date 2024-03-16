@@ -1,13 +1,13 @@
 <section class="drawer" id="drawer-name" data-drawer-target>
-  <div class="drawer__overlay" data-drawer-close tabindex="-1"></div>
-  <div class="drawer__wrapper">
-    <div class="drawer__header">
+  <div class="drawer-overlay" data-drawer-close tabindex="-1"></div>
+  <div class="drawer-wrapper">
+    <div class="drawer-header">
       <div>
         <h3 style="font-weight: 500; margin: 0;">Shopping Cart</h3>
       </div>
       <button class="drawer__close" data-drawer-close aria-label="Close Drawer"></button>
     </div>
-    <div class="drawer__content">
+    <div class="drawer-content">
         <div>
             {% if cart.empty? %}
                 <p id="emptyCart">Your cart is currently empty</p>
@@ -19,6 +19,9 @@
             <a href="/checkout">Checkout</a> {% endcomment %}
         </div>
     </div>
+    <div class="drawer-footer">
+        <p>footer</p>
+    </div>
   </div>
 </section>
 
@@ -27,14 +30,21 @@
         display: none;
     }
 
-    .drawer__header {
+    .drawer-header {
         padding: 1.5rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .drawer__close {
+    .drawer-footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .drawer-close {
         margin: 0;
         padding: 0;
         border: none;
@@ -45,7 +55,7 @@
         height: 15px;
     }
 
-    .drawer__wrapper {
+    .drawer-wrapper {
         position: fixed;
         top: 0;
         right: 0;
@@ -66,7 +76,7 @@
         box-shadow: 0 2px 6px #777;
     }
 
-    .drawer__content {
+    .drawer-content {
         position: relative;
         overflow-x: hidden;
         overflow-y: auto;
@@ -75,7 +85,7 @@
         padding: 0 1.5rem 1.5rem 1.5rem;
         #emptyCart {
             display: flex;
-            margin: 10rem 5rem;
+            margin: 10rem 0;
             justify-content: center;
             color: rgba(61, 31, 5, 0.5);
         }
@@ -85,16 +95,16 @@
         display: block;
     }
 
-    .drawer.is-visible .drawer__wrapper {
+    .drawer.is-visible .drawer-wrapper {
         -webkit-transform: translateX(0);
         transform: translateX(0);
     }
 
-    .drawer.is-visible .drawer__overlay {
+    .drawer.is-visible .drawer-overlay {
         opacity: 0.5;
     }
 
-    .drawer__overlay {
+    .drawer-overlay {
         position: fixed;
         top: 0;
         right: 0;
