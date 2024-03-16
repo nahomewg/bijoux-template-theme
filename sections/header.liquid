@@ -60,6 +60,7 @@
                 <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
             </div>
         </div>
+
         <div class="menu-items">
             <ul>
                 {% for link in linklists.main-menu.links %}
@@ -69,6 +70,7 @@
                 {% endfor %}
             </ul>
         </div>
+
         <div>
             <div>
                 <a href="/search" title="">Search</a>
@@ -76,29 +78,6 @@
             </div>
         </div>
     </div>
-
-    {% comment %} <div class="menu">
-        <div class="logo-container">
-            <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
-        </div>
-        <div class="menu-items">
-            <div class="menu-items">
-                <ul>
-                    {% for link in linklists.main-menu.links %}
-                        {% if link.title != 'Search' %}
-                            <li>{{ link.title | link_to: link.url }}</li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
-            <div>
-                <a href="/search" title="">Search</a>
-                <a href="/cart" title="">Cart</a>
-            </div>
-        </div>
-
-    </div> {% endcomment %}
-
 
     {% comment %} <h1>{{ shop.name }}</h1>
 
@@ -167,11 +146,6 @@
         .banner-btns, .banner-btns select, .banner-text p, .banner-text a {
             font-size: 12px !important;
         }
-    }
-
-    .menu {
-        display: flex;
-        padding: 10px 20px;
     }
 
     .menu-grid {
