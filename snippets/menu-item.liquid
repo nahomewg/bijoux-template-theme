@@ -1,8 +1,8 @@
 <li>
     {{ link.title | link_to: link.url }}
     <select>
+        <option></option>
         {% for child in link.links %}
-            <option></option>
             <option>{{ child.title }}</option>
         {% endfor %}
     </select>
