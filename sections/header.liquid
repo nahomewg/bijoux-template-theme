@@ -75,11 +75,13 @@
             </ul>
         </div>
 
-        <div>
-            <div>
-                <a href="/search" title="">Search</a>
-                <a href="/cart" title="">Cart</a>
-            </div>
+        <div class="icon-container">
+            <a href="/search">
+                <img src="{{ 'search-outline.svg' |  asset_url }}" height="24" width="24">
+            </a>
+            <a href="/cart">
+                <img src="{{ 'bag-handle-outline.svg' |  asset_url }}" height="24" width="24">
+            </a>
         </div>
     </div>
 
@@ -158,6 +160,13 @@
             color: black;
             text-decoration: none;
         }
+    }
+    
+    .icon-container {
+        gap: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
     }
     
 </style>
