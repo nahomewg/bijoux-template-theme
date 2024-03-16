@@ -1,12 +1,11 @@
 <div class="dropdown">
-    <button class="drop-btn">{{ link.title |  link_to: link.url }}</button>
+    <button class="drop-btn">
+        {{ link.title |  link_to: link.url }}
+        <img src="{{ 'chevron-down-outline.svg' | asset_url }}" height="12" width="12">
+    </button>
     <div class="dropdown-content">
         {% for child in link.links %}
-            <a href="{{ child.url }}">
-                {{ child.title }}
-                BLAH
-                <img src="{{ 'chevron-down-outline.svg' | asset_url }}" height="12" width="12">
-                </a>
+            <a href="{{ child.url }}">{{ child.title }}</a>
         {% endfor %}
     </div>
 </div>
