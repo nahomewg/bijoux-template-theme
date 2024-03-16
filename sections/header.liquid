@@ -60,7 +60,7 @@
                 <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
             </div>
         </div>
-        <div>
+        <div class="menu-items">
             <ul>
                 {% for link in linklists.main-menu.links %}
                     {% if link.title != 'Search' %}
@@ -186,14 +186,11 @@
         width: 140px;
     }
 
-    .menu-items, .menu-items ul {
-        display: flex;
-        li {
-            gap: 20px;
-            width: 100%;
-            padding: 5px 10px;
-            list-style-type: none;
-        }
+    .menu-items ul > li {
+        gap: 20px;
+        width: 100%;
+        padding: 5px 10px;
+        list-style-type: none;
     }
 </style>
 
