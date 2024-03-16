@@ -61,11 +61,13 @@
             <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
             </div>
             <div class="menu-items">
-                {% for link in linklists.main-menu.links %}
-                    {% if link.title != 'Search' %}
-                        <li>{{ link.title | link_to: link.url }}</li>
-                    {% endif %}
-                {% endfor %}
+                <ul>
+                    {% for link in linklists.main-menu.links %}
+                        {% if link.title != 'Search' %}
+                            <li>{{ link.title | link_to: link.url }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
             </div>
         </div>
 
@@ -161,10 +163,11 @@
     }
 
     .menu-items {
-        display: flex;
         width: 100%;
+        display: flex;
+        align-items: center;
         li {
-            /* width: 100%; */
+            width: 100%;
             list-style-type: none;
         }
     }
