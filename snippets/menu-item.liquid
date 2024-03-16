@@ -3,6 +3,7 @@
     <div class="dropdown-content">
         {% for child in link.links %}
             <a href="{{ child.url }}">{{ child.title }}</a>
+            <img src="{{ 'chevron-down-outline.svg' | asset_url }}" height="12" width="12">
         {% endfor %}
     </div>
 </div>
