@@ -68,7 +68,7 @@
                         {% if link.title == 'Home' %}
                             <li>{{ link.title | link_to: link.url }}</li>
                         {% else %}
-                            {% render 'menu-item' %}
+                            {% render 'menu-item', title: link.title, url: link.url  %}
                         {% endif %}
                     {% endif %}
                 {% endfor %}
