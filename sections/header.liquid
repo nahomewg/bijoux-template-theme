@@ -61,8 +61,8 @@
             </div>
         </div>
 
-        <div class="menu-items">
-            <ul>
+        <div>
+            <ul class="menu-items">
                 {% for link in linklists.main-menu.links %}
                     {% if link.title != 'Search' %}
                         {% if link.title == 'Home' %}
@@ -166,6 +166,7 @@
     }
 
     .menu-items {
+        display: flex;
         li {
             list-style-type: none;
         }
