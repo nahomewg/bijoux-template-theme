@@ -1,4 +1,4 @@
-{% paginate collection.products by 4 %}
+{% comment %} {% paginate collection.products by 4 %}
     <h1>
         {{ collection.title }}
     </h1>
@@ -18,7 +18,7 @@
     {% endfor %}
 
     {{ paginate | default_pagination }}
-{% endpaginate %}
+{% endpaginate %} {% endcomment %}
 
 <script>
   Shopify.queryParams = {};

@@ -54,49 +54,34 @@
         </div>
     </div>
 
-    <div class="menu">
+    <div class="menu-grid">
         <div>
             <div class="logo-container">
-            {% comment %} company logo here {% endcomment %}
-            <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
+                <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
             </div>
-            <div class="menu-items">
+        </div>
+
+        <div>
+            <ul class="menu-items">
                 {% for link in linklists.main-menu.links %}
                     {% if link.title != 'Search' %}
-                        <li>{{ link.title | link_to: link.url }}</li>
+                        {% if link.title == 'Home' %}
+                            <li>{{ link.title | link_to: link.url }}</li>
+                        {% else %}
+                            {% render 'menu-item', link: link  %}
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
-            </div>
+            </ul>
         </div>
 
         <div>
             <div>
                 <a href="/search" title="">Search</a>
-            </div>
-            <div>
                 <a href="/cart" title="">Cart</a>
             </div>
         </div>
-
     </div>
-
-
-    {% comment %} <h1>{{ shop.name }}</h1>
-
-    <ul>
-        <!-- Main menu -->
-        {% for link in linklists.main-menu.links -%}
-            <li>{{ link.title | link_to: link.url }}</li>
-        {%- endfor %}
-    </ul>
-
-    {% if section.settings.show_search %}
-        <form action="/search">
-            <input type="search" name="q">
-            <button type="submit">Submit</button>
-        </form>
-    {% endif %} {% endcomment %}
-
 
 </header>
 
@@ -150,8 +135,11 @@
         }
     }
 
-    .menu {
+    .menu-grid {
+        display: grid;
         padding: 10px 20px;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .logo-container {
@@ -163,10 +151,15 @@
     .menu-items {
         display: flex;
         li {
-            width: 100%;
+            padding: 5px 10px;
             list-style-type: none;
         }
+        li > a {
+            color: black;
+            text-decoration: none;
+        }
     }
+    
 </style>
 
 {% stylesheet %}
