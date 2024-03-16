@@ -1,18 +1,3 @@
-{% comment %} <li>
-    <select>
-        <option>
-            {{ link.title | link_to: link.url }}
-        </option>
-        <option disabled selected hidden value=""></option>
-        {% for child in link.links %}
-            <option>{{ child.title }}</option>
-        {% endfor %}
-    </select>
-</li>
-
-<style>
-
-</style> {% endcomment %}
 <div class="dropdown">
     <button class="drop-btn">{{ link.title |  link_to: link.url }}</button>
     <div class="dropdown-content">
