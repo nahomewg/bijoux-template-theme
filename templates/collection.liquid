@@ -18,7 +18,7 @@
     {% endfor %}
 
     {{ paginate | default_pagination }}
-{% endpaginate %}
+{% endpaginate %} {% endcomment %}
 
 <script>
   Shopify.queryParams = {};
@@ -43,4 +43,4 @@
     Shopify.queryParams.sort_by = value;
     location.search = new URLSearchParams(Shopify.queryParams).toString();
   });
-</script> {% endcomment %}
+</script>
