@@ -55,7 +55,7 @@
     </div>
 
     <div class="menu">
-        <div>
+        <div style="display: flex;">
             <div class="logo-container">
             {% comment %} company logo here {% endcomment %}
             <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
@@ -162,8 +162,9 @@
 
     .menu-items {
         display: flex;
+        width: 100%;
         li {
-            width: 100%;
+            /* width: 100%; */
             list-style-type: none;
         }
     }
