@@ -54,34 +54,38 @@
         </div>
     </div>
 
-    <div class="menu-grid">
-        <div>
-            <div class="logo-container">
-                <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
-            </div>
-        </div>
-
-        <div>
-            <ul class="menu-items">
-                {% for link in linklists.main-menu.links %}
-                    {% if link.title != 'Search' %}
-                        {% if link.title == 'Home' %}
-                            <li>{{ link.title | link_to: link.url }}</li>
-                        {% else %}
-                            {% render 'menu-item', link: link  %}
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-
-        <div>
+    <div>
+        <div class="menu-grid">
             <div>
-                <a href="/search" title="">Search</a>
-                <a href="/cart" title="">Cart</a>
+                <div class="logo-container">
+                    <img src="{{ 'bijoux_logo.webp' |  asset_url }}">
+                </div>
+            </div>
+    
+            <div>
+                <ul class="menu-items">
+                    {% for link in linklists.main-menu.links %}
+                        {% if link.title != 'Search' %}
+                            {% if link.title == 'Home' %}
+                                <li>{{ link.title | link_to: link.url }}</li>
+                            {% else %}
+                                {% render 'menu-item', link: link  %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+    
+            <div>
+                <div>
+                    <a href="/search" title="">Search</a>
+                    <a href="/cart" title="">Cart</a>
+                </div>
             </div>
         </div>
+
     </div>
+
 
 </header>
 
@@ -137,7 +141,8 @@
 
     .menu-grid {
         display: grid;
-        padding: 10px 20px;
+        width: 80%;
+        /* padding: 10px 20px; */
         grid-auto-rows: 1fr;
         grid-template-columns: 1fr 1fr 1fr;
     }
