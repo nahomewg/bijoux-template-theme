@@ -1,6 +1,16 @@
 <li>
     {{ link.title | link_to: link.url }}
     <select>
+        {% for child in link.links %}
+            <option>{{ child.title }}</option>
+        {% endfor %}
     </select>
 </li>
-<h1>{{link.links}}</h1>
+
+{% comment %} <select>
+    {% for variant in product.variants %}
+        <option value={{ variant.id }}>
+            {{ variant.title }}
+        </option>
+    {% endfor %}
+</select> {% endcomment %}
