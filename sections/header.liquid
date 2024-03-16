@@ -82,24 +82,7 @@
             </div>
         </div>
     </div>
-
-    {% comment %} <h1>{{ shop.name }}</h1>
-
-    <ul>
-        <!-- Main menu -->
-        {% for link in linklists.main-menu.links -%}
-            <li>{{ link.title | link_to: link.url }}</li>
-        {%- endfor %}
-    </ul>
-
-    {% if section.settings.show_search %}
-        <form action="/search">
-            <input type="search" name="q">
-            <button type="submit">Submit</button>
-        </form>
-    {% endif %} {% endcomment %}
-
-
+    
 </header>
 
 <style>
@@ -172,25 +155,7 @@
             list-style-type: none;
         }
     }
-
-    /* .menu-items ul {
-        padding: 0;
-        display: flex;
-        li {
-            gap: 20px;
-            width: 100%;
-            padding: 5px 10px;
-            list-style-type: none;
-        }
-        li:not(:first-child) > a {
-            font-size: 18px;
-            color: black;
-            text-decoration: none;
-        }
-        li:first-child > a {
-            font-size: 18px;
-        }
-    }  */
+    
 </style>
 
 {% stylesheet %}
