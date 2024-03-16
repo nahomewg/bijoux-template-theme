@@ -2,7 +2,7 @@
     {{ link.title | link_to: link.url }}
     <select>
         {% for child in link.links %}
-            <option>{{ child.title }}</option>
+            <option value="{{ child.url }}">{{ child.title }}</option>
         {% endfor %}
     </select>
 </li>
