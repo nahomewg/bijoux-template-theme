@@ -27,6 +27,10 @@
                 {% endfor %}
             {% endif %}
         </div>
+        <div class="subtotal">
+            <p>Subtotal:</p>
+            <p>{{ cart.original_total_price }}</p>
+        </div>
         <div>
             {% comment %} <a href="/cart/clear">Clear cart</a> {% endcomment %}
             {% comment %} <h4 style="margin: 0;">Total amount: <span id="drawer_total_amount"></span></h4>
