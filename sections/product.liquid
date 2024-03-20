@@ -1,39 +1,14 @@
-<div class="product">
-    <div class="width">
+{% form 'product' %}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
-    <div class="product-left">
-        {% for image in product.images %}
-            <img src="{{ image | image_url: master }}">
-        {% endfor %}
+    <div>
+        <label for="quantity">Quantity</label>
+        <input id="quantity" name="quantity" value="1" class="product-quantity">
     </div>
 
-    <div class="product-right">
-        <h1>{{ product.title }}</h1>
-
-        <div class="product-prices">
-            <p class="product-price">
-                {{ product.price | money }}
-            </p>
-        </div>
-        <div class="product-description">
-            {{ product.description }}
-        </div>
-
-        {% comment %} {% form 'product', product %}
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-
-            <div>
-                <label for="quantity">Quantity</label>
-                <input id="quantity" name="quantity" value="1" class="product-quantity">
-            </div>
+    <form method="post" action="/cart/add">
+        <input name="id" value="{{ product.variants.first.id }}" type="hidden"/>
+        <input name="add" value="{{ 'General.add_to_cart' | t }}" type="submit"/>
+    </form>
         
-            <form method="post" action="/cart/add">
-                <input name="id" value="{{ product.variants.first.id }}" type="hidden"/>
-                <input name="add" value="{{ 'General.add_to_cart' | t }}" type="submit"/>
-            </form>
-        
-        {% endform %} {% endcomment %}
-    </div>
-
-    </div>
-</div>
+{% endform %}
