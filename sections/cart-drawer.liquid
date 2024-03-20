@@ -35,7 +35,12 @@
             <div>
                 <a href="/cart/clear" id="clearCart">Clear Cart</a>
             </div>
-            <h4 style="margin: 0;">Total amount: <span id="drawer_total_amount"></span></h4>
+            <div>
+                <a href="/checkout" id="checkout">Proceed to Checkout</a>
+            </div>
+            <div>
+
+            </div>
             <a href="/checkout">Checkout</a>
         </div>
     </div>
@@ -196,14 +201,16 @@
 
     .cart-options > div {
         display: flex;
-        #clearCart:link, #clearCart:visited {
-            background-color: #e48f2f;
+        a:link, a:visited {
+            width: 100%;
             color: white;
-            display: inline-block;
-            text-decoration: none;
             text-align: center;
             padding: 14px 25px;
-            width: 100%;
+            display: inline-block;
+            text-decoration: none;
+        }
+        #clearCart {
+            background-color: #e48f2f;
         }
     }
 </style>
