@@ -4,7 +4,7 @@
     {{  product.description }}
 </div>
 
-{% form 'product', product %}
+{% form 'product' %}
     <select>
         {% for variant in product.variants %}
             <option value={{ variant.id }}>
