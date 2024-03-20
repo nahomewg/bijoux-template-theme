@@ -15,7 +15,7 @@
                 {% for item in cart.items %}
                     <div class="item-grid">
                         <div class="photo-container">
-                            <img src="{{ item.image | image_url }}">
+                            <img src="{{ item.image | image_url: width: 100 }}">
                         </div>
                         <div class="item-title">
                             <a href="{{ item.url }}">{{ item.quantity }}x {{ item.title }}</a>
@@ -171,6 +171,8 @@
 
     .item-price p {
         margin: 0;
+        display: flex;
+        justify-content: end;
     }
 </style>
 
