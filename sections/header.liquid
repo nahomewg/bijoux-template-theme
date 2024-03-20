@@ -81,7 +81,9 @@
             </a>
             <a href="#" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false">
                 <img src="{{ 'bag-handle-outline.svg' |  asset_url }}" height="24" width="24">
-                <span class="cart-badge">{{ cart.item_count }}</span>
+                {% if cart.item_count > 0 %}
+                    <span class="cart-badge">{{ cart.item_count }}</span>
+                {% endif %}
             </a>
         </div>
     </div>
