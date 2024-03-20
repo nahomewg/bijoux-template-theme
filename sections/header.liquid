@@ -79,7 +79,7 @@
             <a href="/search">
                 <img src="{{ 'search-outline.svg' |  asset_url }}" height="24" width="24">
             </a>
-            <a href="#" class="cart-notif" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false">
+            <a href="#" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false">
                 <img src="{{ 'bag-handle-outline.svg' |  asset_url }}" height="24" width="24">
                 <span class="cart-badge">{{ cart.item_count }}</span>
             </a>
@@ -169,12 +169,7 @@
         align-items: center;
         justify-content: end;
     }
-    
-    .cart-notif {
-        position: relative;
-        display: inline-block;
-        padding-top: 15px 26px;
-    }
+
     .cart-badge {
         position: absolute;
         right: 10px;
