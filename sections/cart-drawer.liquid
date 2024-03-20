@@ -17,8 +17,8 @@
                         <div class="photo-container">
                             <img src="{{ item.image | image_url }}">
                         </div>
-                        <div>
-                            <a>{{ item.quantity }}x {{ item.title }}</a>
+                        <div class="item-title">
+                            <a href="{{ item.url }}">{{ item.quantity }}x {{ item.title }}</a>
                         </div>
                         <div>
                             
@@ -158,6 +158,10 @@
         img {
             border-radius: 10px;
         }
+    }
+
+    .item-title {
+
     }
 </style>
 
