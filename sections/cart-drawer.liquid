@@ -14,10 +14,10 @@
             {% else %}
                 {% for item in cart.items %}
                     <div class="item-grid">
-                        <div>
-
+                        <div class="photo-container">
+                            <img src="{{ item.image | image_url }}">
                         </div>
-                        <div>
+                        <div >
 
                         </div>
                         <div>
@@ -149,6 +149,12 @@
         padding: 10px 20px;
         grid-auto-rows: 1fr;
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .photo-container {
+        display: flex;
+        height: 120px;
+        width: 100px;
     }
 </style>
 
