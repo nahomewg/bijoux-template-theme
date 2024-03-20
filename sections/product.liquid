@@ -19,7 +19,7 @@
             {{ product.description }}
         </div>
 
-        {% form 'product', product %}
+        {% comment %} {% form 'product', product %}
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
             <div>
@@ -32,7 +32,7 @@
                 <input name="add" value="{{ 'General.add_to_cart' | t }}" type="submit"/>
             </form>
         
-        {% endform %}
+        {% endform %} {% endcomment %}
     </div>
 
     </div>
