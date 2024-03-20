@@ -20,8 +20,8 @@
                         <div class="item-title">
                             <a href="{{ item.url }}">{{ item.quantity }}x {{ item.title }}</a>
                         </div>
-                        <div>
-                            
+                        <div class="item-price">
+                            <p>{{ item.final_price |  money_with_currency }}</p>
                         </div>
                     </div>
                 {% endfor %}
