@@ -32,7 +32,9 @@
             <p>{{ cart.original_total_price | money_with_currency }}</p>
         </div>
         <div class="cart-options">
-            <a href="/cart/clear" id="clearCart">Clear Cart</a>
+            <div>
+                <a href="/cart/clear" id="clearCart">Clear Cart</a>
+            </div>
             <h4 style="margin: 0;">Total amount: <span id="drawer_total_amount"></span></h4>
             <a href="/checkout">Checkout</a>
         </div>
@@ -192,7 +194,7 @@
         }
     }
 
-    .cart-options {
+    .cart-options > div {
         display: flex;
         #clearCart:link, #clearCart:visited {
             background-color: #e48f2f;
