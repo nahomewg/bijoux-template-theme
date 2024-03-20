@@ -14,23 +14,33 @@
             {% else %}
                 {% for item in cart.items %}
                     <div class="item-grid">
-                        <div>
-
+                        <div class="photo-container">
+                            <img src="{{ item.image | image_url }}">
                         </div>
-                        <div>
-
+                        <div class="item-title">
+                            <a href="{{ item.url }}">{{ item.quantity }}x {{ item.title }}</a>
                         </div>
-                        <div>
-                            
+                        <div class="item-price">
+                            <p>{{ item.final_price |  money_with_currency }}</p>
                         </div>
                     </div>
                 {% endfor %}
             {% endif %}
         </div>
-        <div>
-            {% comment %} <a href="/cart/clear">Clear cart</a> {% endcomment %}
-            {% comment %} <h4 style="margin: 0;">Total amount: <span id="drawer_total_amount"></span></h4>
-            <a href="/checkout">Checkout</a> {% endcomment %}
+        <div class="subtotal">
+            <p>Subtotal:</p>
+            <p>{{ cart.original_total_price | money_with_currency }}</p>
+        </div>
+        <div class="cart-options">
+            <div>
+                <a href="/cart/clear" id="clearCart">Clear Cart</a>
+            </div>
+            <div>
+                <a href="/checkout" id="checkout">Proceed to Checkout</a>
+            </div>
+            <div>
+                <a href="/cart" id="viewCart">View Shopping Cart</a>
+            </div>
         </div>
     </div>
     <div class="drawer-footer">
@@ -142,6 +152,83 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+    }
+
+    .item-grid {
+        display: grid;
+        padding: 10px 0;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .photo-container {
+        display: flex;
+        height: 95px;
+        img {
+            border-radius: 10px;
+        }
+    }
+
+    .item-title {
+        padding: 0 10px;
+    }
+
+    .item-title a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .item-title a:hover {
+        text-decoration: underline;
+    }
+
+    .item-price p {
+        margin: 0;
+        display: flex;
+        justify-content: end;
+    }
+
+    .subtotal {
+        display: flex;
+        padding: 20px 0;
+        justify-content: space-between;
+        p {
+            margin: 0;
+            font-size: 16px;
+        }
+    }
+
+    .cart-options > div {
+        display: flex;
+        a:link, a:visited {
+            width: 100%;
+            margin: 10px 0;
+            color: white;
+            text-align: center;
+            padding: 14px 25px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        #clearCart {
+            background-color: #e48f2f;
+        }
+        #clearCart:hover {
+            background-color: orange;
+        }
+        #checkout {
+            background-color: #6c1818;
+        }
+        #checkout:hover {
+            background-color: brown;
+        }
+        #viewCart {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+        }
+        #viewCart:hover {
+            background-color: ##ededed;
+        }
     }
 </style>
 
