@@ -1,25 +1,3 @@
-{% comment %} <h1>{{ product.title }}</h1>
-<p>{{ product.price | money }}</p>
-<div>
-    {{  product.description }}
-</div>
-
-{% form 'product', product %}
-    <select>
-        {% for variant in product.variants %}
-            <option value={{ variant.id }}>
-                {{ variant.title }}
-            </option>
-        {% endfor %}
-    </select>
-
-    <form method="post" action="/cart/add">
-        <input name="id" value="{{ product.variants.first.id }}" type="hidden"/>
-        <input name="add" value="{{ 'General.add_to_cart' | t }}" type="submit"/>
-    </form>
-
-{% endform %} {% endcomment %}
-
 <div class="product">
     <div class="width">
 
