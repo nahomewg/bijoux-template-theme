@@ -1,0 +1,3 @@
+{% for product in collections['home-page'].products %}
+    {{ product.title | link_to: product.url }}
+{% endfor %}
