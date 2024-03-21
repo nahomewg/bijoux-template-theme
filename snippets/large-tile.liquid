@@ -1,6 +1,6 @@
 <section>
     <div class="background-img">
-
+        <div class="transbox"></div>
     </div>
 </section>
 
@@ -11,6 +11,11 @@
         background-position: center;
         background-repeat: no-repeat;
         background-image: url({{ imgName | asset_url }});
+    }
+
+    .transbox {
+        background-color: #000;
+        opacity: 0.5;
     }
 
 </style>
