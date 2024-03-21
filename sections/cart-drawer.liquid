@@ -25,22 +25,22 @@
                         </div>
                     </div>
                 {% endfor %}
+                <div class="subtotal">
+                    <p>Subtotal:</p>
+                    <p>{{ cart.original_total_price | money_with_currency }}</p>
+                </div>
+                <div class="cart-options">
+                    <div>
+                        <a href="/cart/clear" id="clearCart">Clear Cart</a>
+                    </div>
+                    <div>
+                        <a href="/checkout" id="checkout">Proceed to Checkout</a>
+                    </div>
+                    <div>
+                        <a href="/cart" id="viewCart">View Shopping Cart</a>
+                    </div>
+                </div>
             {% endif %}
-        </div>
-        <div class="subtotal">
-            <p>Subtotal:</p>
-            <p>{{ cart.original_total_price | money_with_currency }}</p>
-        </div>
-        <div class="cart-options">
-            <div>
-                <a href="/cart/clear" id="clearCart">Clear Cart</a>
-            </div>
-            <div>
-                <a href="/checkout" id="checkout">Proceed to Checkout</a>
-            </div>
-            <div>
-                <a href="/cart" id="viewCart">View Shopping Cart</a>
-            </div>
         </div>
     </div>
     <div class="drawer-footer">
