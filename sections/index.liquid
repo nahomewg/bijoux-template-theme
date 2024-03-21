@@ -1,3 +1,4 @@
 {% for product in collections['frontpage'].products %}
     {{ product.title | link_to: product.url }}
 {% endfor %}
+{% render 'large-tile', title: 'Shop Our New Arrivals', buttonTitle: 'Shop Now', imgUrl: 'https://cdn.shoplightspeed.com/shops/661722/themes/18325/v/822229/assets/hero-banner-1-image.jpg?20231011185850' %}
